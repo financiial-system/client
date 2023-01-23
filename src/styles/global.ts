@@ -9,15 +9,19 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Nunito', sans-serif;
   }
 
-  #root {
-    margin: 0 auto;
+  :root {
+    --green: #58DB6D;
+    --grey: #D9D9D9;
+    --black: #000000;
+    --white: #FFFFFF;
   }
 
-  ul, li, button {
-  all: unset;
+  ul, li, button, input {
+    all: unset;
   }
 
   button {
-  cursor: pointer;
+    cursor: pointer;
   }
+
 `;
