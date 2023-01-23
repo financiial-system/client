@@ -11,6 +11,10 @@ export interface IContainer{
 }
 
 export const Container = styled.button<IContainer>`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
     background-color: ${(p) => p.props.background};
     color: ${(p) => p.props.color};
     width: ${(p) => p.props.width};
