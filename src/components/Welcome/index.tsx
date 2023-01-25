@@ -7,6 +7,8 @@ import { useMediaQuery } from "usehooks-ts"
 export default function Welcome() {
   const isMobile = useMediaQuery("(min-width: 375px)")
   const isDesktop = useMediaQuery("(min-width: 768px)")
+  const isLaptop = useMediaQuery("(min-width: 1024px)")
+
   const navigate = useNavigate()
 
   const handleNavigate = () => {
@@ -15,7 +17,7 @@ export default function Welcome() {
 
   return (
     <Container props={{ isMobile, isDesktop }}>
-      <Image src={Wallet} props={{ isMobile, isDesktop }}/>
+      <Image src={Wallet} props={{ isMobile, isDesktop, isLaptop }}/>
 
       <Wrapper>
         <Text>Tem dificuldade de administrar o seu dinheiro? Não sobra nada no final do mês? Agora você pode controlar o que entra e o que sai da sua conta em tempo real de forma fácil, rápida e segura.</Text>

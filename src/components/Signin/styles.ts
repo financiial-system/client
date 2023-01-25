@@ -20,6 +20,6 @@ export const Form = styled.form`
     background-color: var(--green);
     width: 80%;
     max-width: 350px;
-    height: 350px;
+    height: 300px;
     border-radius: 15px;
 `;

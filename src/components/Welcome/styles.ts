@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 
-interface IIsMobile{
+interface IContainer{
     props:{
         isMobile: boolean;
         isDesktop: boolean;
     }
 }
 
-export const Container = styled.div<IIsMobile>`
+interface IImage{
+    props:{
+        isMobile: boolean;
+        isDesktop: boolean;
+        isLaptop: boolean;
+    }
+}
+
+export const Container = styled.div<IContainer>`
     display: flex;
     ${(p) => (p.props.isMobile &&{flexDirection: 'column'})};
     ${(p) => (p.props.isDesktop &&{flexDirection: 'row'})};
@@ -17,9 +25,10 @@ export const Container = styled.div<IIsMobile>`
     height: 100vh;
 `;
 
-export const Image = styled.img<IIsMobile>`
+export const Image = styled.img<IImage>`
     ${(p) => (p.props.isMobile && {display: 'none'} )};
     ${(p) => (p.props.isDesktop && {display: 'block', width: '50%'} )};
+    ${(p) => (p.props.isLaptop && {display: 'block', width: '40%'} )};
 `;
 
 export const Wrapper = styled.div`
@@ -35,6 +44,7 @@ export const Text = styled.p`
     font-size: 24px;
     font-weight: 500;
     text-align: justify;
+    max-width: 500px;
     width: 80%;
 `;
 
