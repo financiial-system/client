@@ -16,7 +16,7 @@ export const GlobalStyle = createGlobalStyle`
     --white: #FFFFFF;
   }
 
-  ul, li, button, input {
+  ul, li, button{
     all: unset;
   }
 

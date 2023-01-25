@@ -5,6 +5,7 @@ interface IContainer{
         width?: string;
         height?: string;
         background?: string;
+        cursor?: string;
     } 
 }
 
@@ -18,6 +19,7 @@ export const Input = styled.input<IContainer>`
     height: ${(p) => p.props.height};
     background-color: ${(p) => p.props.background};
     margin-bottom: 20px;
+    cursor: ${(p) => p.props.cursor};
 `
 
 export const Label = styled.label`
