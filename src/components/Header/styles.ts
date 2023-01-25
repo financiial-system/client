@@ -10,9 +10,9 @@ interface ILogotipo{
 export const Header = styled.header`
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    padding: 40px 0px;
     background-color: var(--green);
-    height: 100px;
+    height: 150px;
 `;
 export const Name = styled.h2``;
 
@@ -24,17 +24,19 @@ export const Logotipo = styled.h2<ILogotipo>`
 export const Container = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    gap: 5px;
 `;
 
 export const Avatar = styled.img`
     width: 50px;
+    height: 50px;
     border-radius: 20px;
 `;
 
 export const Text = styled.h2``;
 
 export const Logout = styled.button`
+    display: flex;
+    padding-top: 4px;
     cursor: pointer;
 `;
