@@ -35,7 +35,7 @@ export default function SignIn() {
         <Form onSubmit={handleSubmit(onSubmit)}>
             <Input type='email' label='Email' placeholder='Digite seu email' width='250px' height='30px' background='#D9D9D9' register={{...register("email")}} error={errors.email?.message} />
             <Input type='password' label='password' placeholder='Digite sua senha' width='250px' height='30px' background='#D9D9D9' register={{...register("password")}} error={errors.password?.message} />
-            <Button type='submit' content='Registrar-se' background='#000000' color='#FFFFFF' width='250px' height='30px'/>
+            <Button type='submit' content='Entrar' background='#000000' color='#FFFFFF' width='250px' height='30px'/>
         </Form>
     </Container>
   )
