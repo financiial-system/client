@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface IContainer{
+interface IInput{
     props:{
         width?: string;
         height?: string;
@@ -14,7 +14,7 @@ export const Container = styled.div`
     flex-direction: column;
 `;
 
-export const Input = styled.input<IContainer>` 
+export const Input = styled.input<IInput>` 
     width: ${(p) => p.props.width};
     height: ${(p) => p.props.height};
     background-color: ${(p) => p.props.background};

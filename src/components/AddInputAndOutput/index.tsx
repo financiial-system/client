@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useMediaQuery } from 'usehooks-ts'
 import { Container, Form , Wrapper} from './styles'
 import Input from '../Input'
 import Button from '../Button'
@@ -8,6 +9,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 
 export default function AddInputAndOutput() {
     const [checked, setChecked] = useState({input: false, output: false})
+    const isMobile = useMediaQuery("(max-width: 375px)")
+    const isMobileL = useMediaQuery("(max-width: 425px)")
 
     const valuesSchema = yup.object().shape({
         description: yup.string().required("Descrição obrigatória"),
@@ -41,15 +44,15 @@ export default function AddInputAndOutput() {
 
   return (
     <Container>
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <Input type='text' label='Descrição' width='250px' height='30px' background='#D9D9D9' register={{...register("description")}} error={errors.description?.message} />
-            <Input type='text' label='Valor' width='250px' height='30px' background='#D9D9D9' register={{...register("value")}} error={errors.value?.message} />
-            <Wrapper>
-                <Input type='radio' value='input' background='#D9D9D9' checked={checked.input} onChange={changeRadio} cursor='pointer'/>Entradas
-                <Input type='radio' value='output' background='#D9D9D9' checked={checked.output} onChange={changeRadio} cursor='pointer'/>Saídas
-            </Wrapper>
-            <Button type='submit' content='Adicionar' background='#58DB6D' color='#000000' width='150px' height='30px'/>
-        </Form>
+      <Form onSubmit={handleSubmit(onSubmit)} props={{isMobile,isMobileL}}>
+        <Input type='text' label='Descrição' height='30px' background='#D9D9D9' register={{...register("description")}} error={errors.description?.message} />
+        <Input type='text' label='Valor' height='30px' background='#D9D9D9' register={{...register("value")}} error={errors.value?.message} />
+        <Wrapper>
+          <Input type='radio' value='input' background='#D9D9D9' checked={checked.input} onChange={changeRadio} cursor='pointer'/>Entradas
+          <Input type='radio' value='output' background='#D9D9D9' checked={checked.output} onChange={changeRadio} cursor='pointer'/>Saídas
+        </Wrapper>
+        <Button type='submit' content='Adicionar' background='#58DB6D' color='#000000' width='150px' height='30px'/>
+      </Form>
     </Container>
   )
 }
