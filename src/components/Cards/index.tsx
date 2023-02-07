@@ -15,7 +15,7 @@ export default function Cards() {
             <Card key={data.id} props={{isMobile, isTablet, isLaptop}}>
                 <CardHeader>
                     <Title>{data.title}</Title>
-                    {data.title === 'Entradas' && <BsArrowUpCircle fontSize={20}/> || data.title === 'Saidas' && <BsArrowDownCircle fontSize={20}/> || data.title === 'Total' && <RiMoneyDollarCircleLine fontSize={25} />}
+                    {data.title === 'Entradas' && <BsArrowUpCircle fontSize={20} style={{'color':'var(--green)'}}/> || data.title === 'Saidas' && <BsArrowDownCircle fontSize={20} style={{'color':'var(--red)'}}/> || data.title === 'Total' && <RiMoneyDollarCircleLine fontSize={25} />}
                 </CardHeader>
                 <CardBody>
                     <Monetary>R$ {data.value}</Monetary>

@@ -22,12 +22,8 @@ export const Form = styled.form<IForm>`
     gap: 20px;
     background-color: var(--white);
     padding: 20px 10px;
-
-    @media (max-width: 1440px){width: 1100px;}
-    @media (max-width: 1360px){width: 1060px;}
-    @media (max-width: 1024px){width: 900px;}
-    @media (max-width: 768px){width: 700px;}
-    @media (max-width: 425px){width: 200px;}
+    margin: 20px 100px;
+    width: 100%;
 `
 
 export const Wrapper = styled.div`

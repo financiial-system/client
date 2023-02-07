@@ -7,7 +7,7 @@ import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 
-export default function AddInputAndOutput() {
+export default function form() {
     const [checked, setChecked] = useState({input: false, output: false})
     const isMobile = useMediaQuery("(max-width: 375px)")
     const isMobileL = useMediaQuery("(max-width: 425px)")
