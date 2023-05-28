@@ -17,7 +17,7 @@ export default function transactions() {
         return <Transactions>
           <Text>{data.description}</Text>
           <Text>R$ {data.amount}</Text>
-        
+            {/* Mudar IconContainer para Type */}
             <IconContainer>
               {data.title === 'Entradas' ? <BsArrowUpCircle fontSize={20} style={{'color':'var(--green)'}}/> : <BsArrowDownCircle fontSize={20} style={{'color':'var(--red)'}}/> }
               <BsFillTrashFill></BsFillTrashFill>
