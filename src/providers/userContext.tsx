@@ -1,15 +1,14 @@
-import { ReactNode, createContext  } from "react";
+import { createContext } from "react";
+import { IProviderUser } from "../interfaces/users"
 import api from "../services";
 
-interface IUserProviderProps {
-    children: ReactNode,
-}
+const INITIAL_STATE:any = {}
 
-export const UserContext = createContext({})
+export const UserContext = createContext(INITIAL_STATE)
 
-export const UserProvider = ({ children }: IUserProviderProps) => {
+export const UserProvider = ({ children }: IProviderUser) => {
 
-    async function createUser(data: object){
+    async function createUser(data: any){
         try {
             const res = await api.post('/users', data);
             return res;
@@ -18,7 +17,7 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         }
     }
 
-    async function createLogin(data: object) {
+    async function createLogin(data: any) {
         try {
             const res = await api.post('/login', data)
         } catch (err) {
@@ -26,33 +25,9 @@ export const UserProvider = ({ children }: IUserProviderProps) => {
         }
     }
 
-    async function createTransactions(data: object) {
-        try {
-            const res = await api.post('/transactions', data)
-        } catch (err) {
-            return err
-        }
-    }
-
-    async function listTransactions() {
-        try {
-            const res = await api.get('/transactions')
-        } catch (err) {
-            return err
-        }
-    }
-
-    async function deleteTransactions(id: number) {
-        try {
-            const res = await api.delete(`/transactions/${id}`)
-        } catch (err) {
-            return err
-        }
-    }
-
     return(
         <UserContext.Provider
-            value={{createUser, createLogin, createTransactions, listTransactions, deleteTransactions}}
+            value={{createUser, createLogin}}
         >
             {children}
         </UserContext.Provider>

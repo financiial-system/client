@@ -1,15 +1,14 @@
-import { ReactNode, createContext } from "react";
+import { createContext } from "react";
 import api from "../services";
+import { IProviderTransactions } from '../interfaces/transactions'
 
-interface ITransactionsProviderProps {
-    children: ReactNode,
-}
+const INITIAL_STATE:any = {}
 
-export const TransactionsContext = createContext({})
+export const TransactionsContext = createContext(INITIAL_STATE)
 
-export const TransactionsProvider = ({ children }: ITransactionsProviderProps) => {
+export const TransactionsProvider = ({ children }: IProviderTransactions) => {
 
-    async function createTransactions(data: object) {
+    async function createTransactions(data: any) {
         try {
             const res = await api.post('/transactions', data)
         } catch (err) {
@@ -20,6 +19,7 @@ export const TransactionsProvider = ({ children }: ITransactionsProviderProps) =
     async function listTransactions() {
         try {
             const res = await api.get('/transactions')
+
         } catch (err) {
             return err
         }

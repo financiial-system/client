@@ -1,10 +1,19 @@
-import { Container, Wrapper, Header,  Transactions, Text, IconContainer } from './styles'
+import { Container, Wrapper, Header,  Transactions, Text, Type } from './styles'
 import { BsArrowDownCircle } from 'react-icons/bs'
 import { BsArrowUpCircle, BsFillTrashFill } from 'react-icons/bs'
 import { datas } from '../../mocks/transactions'
+import { useContext } from 'react'
+import { TransactionsContext } from '../../providers/transactionsContext'
 
 export default function transactions() {
-
+  const { listTransactions } = useContext(TransactionsContext)
+ 
+  const handleDeleteTransactions  = (id:number) => {
+    //console.log(id)
+    //const result = transactions.filter(transactions.id === id){}
+    //toast.successs('✔️ Transação deletada!')
+  }
+  
   return (
     <Container>
       <Wrapper>
@@ -13,15 +22,15 @@ export default function transactions() {
           <Text>Valor</Text>
           <Text>Tipo</Text>
         </Header>
-        {datas.map((data)=>{
-        return <Transactions>
+        {datas.map((data,index)=>{
+        return <Transactions key={index}>
           <Text>{data.description}</Text>
           <Text>R$ {data.amount}</Text>
-            {/* Mudar IconContainer para Type */}
-            <IconContainer>
-              {data.title === 'Entradas' ? <BsArrowUpCircle fontSize={20} style={{'color':'var(--green)'}}/> : <BsArrowDownCircle fontSize={20} style={{'color':'var(--red)'}}/> }
-              <BsFillTrashFill></BsFillTrashFill>
-            </IconContainer>
+
+            <Type>
+              {data.type === 'Entradas' ? <BsArrowUpCircle fontSize={20} style={{'color':'var(--green)'}}/> : <BsArrowDownCircle fontSize={20} style={{'color':'var(--red)'}}/> }
+              <BsFillTrashFill onClick={() => handleDeleteTransactions(data.id)}></BsFillTrashFill>
+            </Type>
           </Transactions>
         })}
       </Wrapper>

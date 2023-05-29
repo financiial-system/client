@@ -35,7 +35,7 @@ export const Transactions = styled.div`
     width: 100%;
 `
 
-export const IconContainer = styled.div`
+export const Type = styled.div`
     display: flex;
     align-items: center;
     gap: 5px;
