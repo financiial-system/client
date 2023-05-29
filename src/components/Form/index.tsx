@@ -6,8 +6,13 @@ import Button from '../Button'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useContext } from 'react'
+import { TransactionsContext } from '../../providers/transactionsContext'
+import { toast } from 'react-toastify'
 
 export default function form() {
+    const { createTransactions } = useContext(TransactionsContext)
+
     const [checked, setChecked] = useState({input: false, output: false})
     const isMobile = useMediaQuery("(max-width: 375px)")
     const isMobileL = useMediaQuery("(max-width: 425px)")
@@ -28,8 +33,19 @@ export default function form() {
         resolver: yupResolver(valuesSchema),
     });
 
-    const onSubmit = async (data: object) => {
-       console.log(data);
+    const onSubmit = async (data: any) => {
+      if(checked.input === true){
+        data['type'] = 'Entrada'
+
+      }else if(checked.output === true){
+        data['type'] = 'Saída'
+      }
+      
+      const res = await createTransactions(data)
+      if(res?.name !== 'AxiosError'){
+        toast('✔️ Transação bem sucedida!')
+      }
+      
     }
 
     const changeRadio = (e:any) => {
@@ -49,7 +65,7 @@ export default function form() {
         <Input type='text' label='Valor' height='30px' background='#D9D9D9' register={{...register("value")}} error={errors.value?.message} />
         <Wrapper>
           <Input type='radio' value='input' background='#D9D9D9' checked={checked.input} onChange={changeRadio} cursor='pointer'/>Entradas
-          <Input type='radio' value='output' background='#D9D9D9' checked={checked.output} onChange={changeRadio} cursor='pointer'/>Saídas
+          <Input type='radio' value='output' background='#D9D9D9' error={errors.value?.type} checked={checked.output} onChange={changeRadio} cursor='pointer'/>Saídas
         </Wrapper>
         <Button type='submit' content='Adicionar' background='#58DB6D' color='#000000' width='150px' height='30px'/>
       </Form>

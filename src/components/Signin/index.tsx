@@ -5,8 +5,13 @@ import Button from '../Button'
 import * as yup from 'yup'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useContext } from 'react'
+import { UserContext } from '../../providers/userContext'
+import { toast } from 'react-toastify'
 
 export default function SignIn() {
+    const { createLogin } = useContext(UserContext)
+
     const navigate = useNavigate()
 
     const signinSchema = yup.object().shape({
@@ -25,8 +30,12 @@ export default function SignIn() {
         resolver: yupResolver(signinSchema),
     });
 
-    const onSubmit = async (data: object) => {
+    const onSubmit = async (data: any) => {
+      const res = await createLogin(data)
+      if(res?.name !== 'AxiosError'){
         navigate("/dashboard")
+        toast('✔️ Usuário logado com sucesso!')
+      }
     }
 
   return (
