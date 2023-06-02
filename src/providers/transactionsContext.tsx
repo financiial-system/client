@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import api from "../services";
 import { IProviderTransactions } from '../interfaces/transactions'
 
@@ -7,10 +7,16 @@ const INITIAL_STATE:any = {}
 export const TransactionsContext = createContext(INITIAL_STATE)
 
 export const TransactionsProvider = ({ children }: IProviderTransactions) => {
-
+    const [token, setToken] = useState([])
+    
     async function createTransactions(data: any) {
         try {
-            const res = await api.post('/transactions', data)
+            const res = await api.post('/transactions', data, {
+                headers:{
+                    "Authorization":`Bearer ${token}`
+                }
+            })
+            return res
         } catch (err) {
             return err
         }
@@ -19,6 +25,7 @@ export const TransactionsProvider = ({ children }: IProviderTransactions) => {
     async function listTransactions() {
         try {
             const res = await api.get('/transactions')
+            return res
 
         } catch (err) {
             return err
@@ -28,6 +35,7 @@ export const TransactionsProvider = ({ children }: IProviderTransactions) => {
     async function deleteTransactions(id: number) {
         try {
             const res = await api.delete(`/transactions/${id}`)
+            return res
         } catch (err) {
             return err
         }
@@ -35,7 +43,7 @@ export const TransactionsProvider = ({ children }: IProviderTransactions) => {
 
     return(
         <TransactionsContext.Provider
-            value={{createTransactions, listTransactions, deleteTransactions}}
+            value={{createTransactions, listTransactions, deleteTransactions, setToken}}
         >
             {children}
         </TransactionsContext.Provider>

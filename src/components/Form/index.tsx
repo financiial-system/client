@@ -19,7 +19,7 @@ export default function form() {
 
     const valuesSchema = yup.object().shape({
         description: yup.string().required("Descrição obrigatória"),
-        value: yup.string().required("Valor obrigatório"),
+        amount: yup.string().required("Quantia obrigatória"),
     })
 
     type values = yup.InferType<typeof valuesSchema>
@@ -42,8 +42,9 @@ export default function form() {
       }
       
       const res = await createTransactions(data)
+
       if(res?.name !== 'AxiosError'){
-        toast('✔️ Transação bem sucedida!')
+        toast.success('Transação bem sucedida!')
       }
       
     }
@@ -62,7 +63,7 @@ export default function form() {
     <Container>
       <Form onSubmit={handleSubmit(onSubmit)} props={{isMobile,isMobileL}}>
         <Input type='text' label='Descrição' height='30px' background='#D9D9D9' register={{...register("description")}} error={errors.description?.message} />
-        <Input type='text' label='Valor' height='30px' background='#D9D9D9' register={{...register("value")}} error={errors.value?.message} />
+        <Input type='text' label='Quantidade' height='30px' background='#D9D9D9' register={{...register("amount")}} error={errors.amount?.message} />
         <Wrapper>
           <Input type='radio' value='input' background='#D9D9D9' checked={checked.input} onChange={changeRadio} cursor='pointer'/>Entradas
           <Input type='radio' value='output' background='#D9D9D9' error={errors.value?.type} checked={checked.output} onChange={changeRadio} cursor='pointer'/>Saídas

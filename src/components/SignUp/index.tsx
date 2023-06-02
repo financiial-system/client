@@ -34,11 +34,10 @@ export default function SignUp() {
 
     const onSubmit = async (data: any) => {
       const res = await createUser(data)
-      console.log(res)
 
       if(res?.name !== 'AxiosError'){
         navigate('/signin')
-        toast('✔️ Usuário criado com sucesso!')
+        toast.success('Usuário criado com sucesso!')
       }
     }
 

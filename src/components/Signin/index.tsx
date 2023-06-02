@@ -8,9 +8,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useContext } from 'react'
 import { UserContext } from '../../providers/userContext'
 import { toast } from 'react-toastify'
+import { TransactionsContext } from '../../providers/transactionsContext'
 
 export default function SignIn() {
     const { createLogin } = useContext(UserContext)
+    const { setToken } = useContext(TransactionsContext)
 
     const navigate = useNavigate()
 
@@ -32,9 +34,11 @@ export default function SignIn() {
 
     const onSubmit = async (data: any) => {
       const res = await createLogin(data)
+      setToken(res.data.token)
+
       if(res?.name !== 'AxiosError'){
         navigate("/dashboard")
-        toast('✔️ Usuário logado com sucesso!')
+        toast.success('Usuário logado com sucesso!')
       }
     }
 
