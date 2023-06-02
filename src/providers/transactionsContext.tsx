@@ -8,6 +8,7 @@ export const TransactionsContext = createContext(INITIAL_STATE)
 
 export const TransactionsProvider = ({ children }: IProviderTransactions) => {
     const [token, setToken] = useState([])
+    const [transactions, setTransactions] = useState<any>([])
     
     async function createTransactions(data: any) {
         try {
@@ -25,7 +26,7 @@ export const TransactionsProvider = ({ children }: IProviderTransactions) => {
     async function listTransactions() {
         try {
             const res = await api.get('/transactions')
-            return res
+            return setTransactions(res.data.transactions)
 
         } catch (err) {
             return err
@@ -43,7 +44,7 @@ export const TransactionsProvider = ({ children }: IProviderTransactions) => {
 
     return(
         <TransactionsContext.Provider
-            value={{createTransactions, listTransactions, deleteTransactions, setToken}}
+            value={{createTransactions, listTransactions, deleteTransactions, setToken, transactions}}
         >
             {children}
         </TransactionsContext.Provider>

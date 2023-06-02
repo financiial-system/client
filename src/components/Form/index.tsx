@@ -11,7 +11,7 @@ import { TransactionsContext } from '../../providers/transactionsContext'
 import { toast } from 'react-toastify'
 
 export default function form() {
-    const { createTransactions } = useContext(TransactionsContext)
+    const { createTransactions, listTransactions } = useContext(TransactionsContext)
 
     const [checked, setChecked] = useState({input: false, output: false})
     const isMobile = useMediaQuery("(max-width: 375px)")
@@ -45,6 +45,7 @@ export default function form() {
 
       if(res?.name !== 'AxiosError'){
         toast.success('Transação bem sucedida!')
+        listTransactions()
       }
       
     }

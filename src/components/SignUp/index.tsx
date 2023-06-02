@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { UserContext } from '../../providers/userContext'
 import { useNavigate } from 'react-router-dom'
 import { Container, Title, Form } from './styles'
@@ -34,6 +34,7 @@ export default function SignUp() {
 
     const onSubmit = async (data: any) => {
       const res = await createUser(data)
+      localStorage.setItem("userId",res.data.users.id)
 
       if(res?.name !== 'AxiosError'){
         navigate('/signin')

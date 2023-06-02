@@ -12,7 +12,7 @@ import { TransactionsContext } from '../../providers/transactionsContext'
 
 export default function SignIn() {
     const { createLogin } = useContext(UserContext)
-    const { setToken } = useContext(TransactionsContext)
+    const { listTransactions, setToken } = useContext(TransactionsContext)
 
     const navigate = useNavigate()
 
@@ -39,6 +39,7 @@ export default function SignIn() {
       if(res?.name !== 'AxiosError'){
         navigate("/dashboard")
         toast.success('Usuário logado com sucesso!')
+        listTransactions()
       }
     }
 

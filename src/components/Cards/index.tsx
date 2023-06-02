@@ -1,6 +1,6 @@
 import { Container, Card, CardHeader, Title, CardBody, Monetary } from "./styles"
 import { useMediaQuery } from "usehooks-ts"
-import { datas } from "../../mocks"
+import { datas } from "../../mocks/cards"
 import { BsArrowUpCircle, BsArrowDownCircle } from 'react-icons/bs'
 import { RiMoneyDollarCircleLine } from 'react-icons/ri'
 
