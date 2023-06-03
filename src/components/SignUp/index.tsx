@@ -35,10 +35,9 @@ export default function SignUp() {
     const onSubmit = async (data: any) => {
       const res = await createUser(data)
       localStorage.setItem("userId",res.data.users.id)
-
       if(res?.name !== 'AxiosError'){
         navigate('/signin')
-        toast.success('Usuário criado com sucesso!')
+        toast.success('Usuário criado!')
       }
     }
 

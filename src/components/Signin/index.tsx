@@ -38,7 +38,7 @@ export default function SignIn() {
 
       if(res?.name !== 'AxiosError'){
         navigate("/dashboard")
-        toast.success('Usuário logado com sucesso!')
+        toast.success('Usuário logado!')
         listTransactions()
       }
     }
