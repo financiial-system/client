@@ -7,7 +7,6 @@ const INITIAL_STATE:any = {}
 export const UserContext = createContext(INITIAL_STATE)
 
 export const UserProvider = ({ children }: IProviderUser) => {
-    
     async function createUser(data: any){
         try {
             const res = await api.post('/users', data);

@@ -29,7 +29,7 @@ export default function input({label, type, value, style, checked , onChange, pl
         checked={checked}
         onChange={onChange}
         placeholder={placeholder}
-        {...register}
+        {...register} 
       >
       </Input>
     </Container>

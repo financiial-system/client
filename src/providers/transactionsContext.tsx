@@ -35,7 +35,11 @@ export const TransactionsProvider = ({ children }: IProviderTransactions) => {
 
     async function deleteTransactions(id: number) {
         try {
-            const res = await api.delete(`/transactions/${id}`)
+            const res = await api.delete(`/transactions/${id}`,{
+                headers:{
+                    "Authorization":`Bearer ${token}`
+                }
+            })
             return res
         } catch (err) {
             return err

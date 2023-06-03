@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import { Container, Form , Wrapper} from './styles'
 import Input from '../Input'
@@ -14,6 +14,7 @@ export default function form() {
     const { createTransactions, listTransactions } = useContext(TransactionsContext)
 
     const [checked, setChecked] = useState({input: false, output: false})
+
     const isMobile = useMediaQuery("(max-width: 375px)")
     const isMobileL = useMediaQuery("(max-width: 425px)")
 
@@ -44,10 +45,9 @@ export default function form() {
       const res = await createTransactions(data)
 
       if(res?.name !== 'AxiosError'){
-        toast.success('Transação bem sucedida!')
+        toast.success('Transação realizada!')
         listTransactions()
       }
-      
     }
 
     const changeRadio = (e:any) => {
@@ -58,6 +58,7 @@ export default function form() {
           [e.target.value]: true
         };
       });
+      
     };
 
   return (
@@ -66,10 +67,10 @@ export default function form() {
         <Input type='text' label='Descrição' height='30px' background='#D9D9D9' register={{...register("description")}} error={errors.description?.message} />
         <Input type='text' label='Quantidade' height='30px' background='#D9D9D9' register={{...register("amount")}} error={errors.amount?.message} />
         <Wrapper>
-          <Input type='radio' value='input' background='#D9D9D9' checked={checked.input} onChange={changeRadio} cursor='pointer'/>Entradas
-          <Input type='radio' value='output' background='#D9D9D9' error={errors.value?.type} checked={checked.output} onChange={changeRadio} cursor='pointer'/>Saídas
+          <Input value='input' type='radio' background='#D9D9D9' checked={checked.input} onChange={changeRadio} cursor='pointer'/>Entradas
+          <Input value='output' type='radio'  background='#D9D9D9' error={errors.value?.type} checked={checked.output} onChange={changeRadio} cursor='pointer'/>Saídas
         </Wrapper>
-        <Button type='submit' content='Adicionar' background='#58DB6D' color='#000000' width='150px' height='30px'/>
+        <Button type='submit' content='Adicionar' background='#58DB6D' color='#000000' width='150px' height='30px' />
       </Form>
     </Container>
   )
