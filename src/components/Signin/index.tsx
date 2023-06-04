@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Container, Title, Form } from './styles'
 import Input from '../Input'
 import Button from '../Button'
@@ -14,7 +14,7 @@ export default function SignIn() {
     const { createLogin } = useContext(UserContext)
     const { listTransactions, setToken } = useContext(TransactionsContext)
 
-    const navigate = useNavigate()
+    const history = useHistory()
 
     const signinSchema = yup.object().shape({
         email: yup.string().required("Email obrigatório"),
@@ -35,9 +35,10 @@ export default function SignIn() {
     const onSubmit = async (data: any) => {
       const res = await createLogin(data)
       setToken(res.data.token)
+      localStorage.setItem("token",res.data.token)
 
       if(res?.name !== 'AxiosError'){
-        navigate("/dashboard")
+        history.push("/dashboard")
         toast.success('Usuário logado!')
         listTransactions()
       }

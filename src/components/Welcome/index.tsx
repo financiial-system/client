@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Container, Image,  Wrapper, Text } from "./styles"
 import Wallet from "../../assets/wallet.png"
 import Button  from '../Button'
@@ -9,10 +9,10 @@ export default function Welcome() {
   const isDesktop = useMediaQuery("(min-width: 768px)")
   const isLaptop = useMediaQuery("(min-width: 1024px)")
 
-  const navigate = useNavigate()
+  const history = useHistory()
 
   const handleNavigate = () => {
-    navigate("/signup")
+    history.push("/signup")
   }
 
   return (

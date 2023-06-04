@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import { UserContext } from '../../providers/userContext'
-import { useNavigate } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Container, Title, Form } from './styles'
 import Input from '../Input'
 import Button from '../Button'
@@ -12,7 +12,7 @@ import { toast } from 'react-toastify'
 export default function SignUp() {
   const { createUser } = useContext(UserContext)
 
-  const navigate = useNavigate()
+  const history = useHistory()
 
     const signupSchema = yup.object().shape({
         name: yup.string().required("Nome obrigatório"),
@@ -36,7 +36,7 @@ export default function SignUp() {
       const res = await createUser(data)
       localStorage.setItem("userId",res.data.users.id)
       if(res?.name !== 'AxiosError'){
-        navigate('/signin')
+        history.push('/signin')
         toast.success('Usuário criado!')
       }
     }
