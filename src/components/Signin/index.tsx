@@ -31,11 +31,12 @@ export default function SignIn() {
       } = useForm({
         resolver: yupResolver(signinSchema),
     });
-
+    
     const onSubmit = async (data: any) => {
       const res = await createLogin(data)
       setToken(res.data.token)
       localStorage.setItem("token",res.data.token)
+      console.log(res)
 
       if(res?.name !== 'AxiosError'){
         history.push("/dashboard")

@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { IProviderUser } from "../interfaces/users"
 import api from "../services";
+import { toast } from "react-toastify";
 
 const INITIAL_STATE:any = {}
 
@@ -21,7 +22,9 @@ export const UserProvider = ({ children }: IProviderUser) => {
             const res = await api.post('/login', data)
             return res
         } catch (err) {
-            return err
+            if(err){
+                toast.error('Email ou senha inválido!')
+            }
         }
     }
 
