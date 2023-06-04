@@ -11,7 +11,7 @@ export default function header() {
 
     const clearToken = () => {
       localStorage.removeItem("token")
-      history.push("/")
+      history.push("/signin")
     }
 
   return (

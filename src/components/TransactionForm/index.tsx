@@ -10,7 +10,7 @@ import { useContext } from 'react'
 import { TransactionsContext } from '../../providers/transactionsContext'
 import { toast } from 'react-toastify'
 
-export default function form() {
+export default function TransactionForm() {
     const { createTransactions, listTransactions } = useContext(TransactionsContext)
 
     const [checked, setChecked] = useState({input: false, output: false})
@@ -40,14 +40,17 @@ export default function form() {
 
       }else if(checked.output === true){
         data['type'] = 'Saída'
+
       }
       
       const res = await createTransactions(data)
-
-      if(res?.name !== 'AxiosError'){
+      if(res.status === 400){
+        toast.error('Campo obrigatório!')
+      }else{
         toast.success('Transação realizada!')
         listTransactions()
       }
+      
     }
 
     const changeRadio = (e:any) => {

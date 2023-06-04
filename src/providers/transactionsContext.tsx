@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import api from "../services";
 import { IProviderTransactions } from '../interfaces/transactions'
+import { toast } from "react-toastify";
 
 const INITIAL_STATE:any = {}
 
@@ -19,7 +20,9 @@ export const TransactionsProvider = ({ children }: IProviderTransactions) => {
             })
             return res
         } catch (err) {
-            return err
+            if(err){
+                toast.error('Campo obrigatório!')
+            }
         }
     }
 
