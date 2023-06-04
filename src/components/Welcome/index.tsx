@@ -1,6 +1,6 @@
 import { useHistory } from 'react-router-dom'
 import { Container, Image,  Wrapper, Text } from "./styles"
-import Wallet from "../../assets/wallet.png"
+import Financial from "../../assets/financial.jpg"
 import Button  from '../Button'
 import { useMediaQuery } from "usehooks-ts"
 
@@ -17,10 +17,10 @@ export default function Welcome() {
 
   return (
     <Container props={{ isMobile, isDesktop }}>
-      <Image src={Wallet} props={{ isMobile, isDesktop, isLaptop }}/>
+      <Image src={Financial} props={{ isMobile, isDesktop, isLaptop }}/>
 
       <Wrapper>
-        <Text>Tem dificuldade de administrar o seu dinheiro? Não sobra nada no final do mês? Agora você pode controlar o que entra e o que sai da sua conta em tempo real de forma fácil, rápida e segura.</Text>
+        <Text>Tem dificuldade de administrar o seu dinheiro? Não consegue poupar nada no final do mês? Que tal controlar os seus gastos de forma fácil, rápida e segura? Vamos lá!</Text>
         <Button 
           content="Registre-se"
           background="#000000"
