@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import { UserContext } from '../../providers/userContext'
-import { useHistory } from 'react-router-dom'
-import { Container, Title, Form } from './styles'
+import { useHistory, Link } from 'react-router-dom'
+import { Container, Title, Form, Span, Text } from './styles'
 import Input from '../Input'
 import Button from '../Button'
 import * as yup from 'yup'
@@ -35,6 +35,7 @@ export default function SignUp() {
     const onSubmit = async (data: any) => {
       const res = await createUser(data)
       localStorage.setItem("userId",res.data.users.id)
+
       if(res?.name !== 'AxiosError'){
         history.push('/signin')
         toast.success('Usuário criado!')
@@ -50,6 +51,7 @@ export default function SignUp() {
             <Input type='email' label='Email' placeholder='Digite seu email' width='250px' height='30px' background='#D9D9D9' register={{...register("email")}} error={errors.email?.message} />
             <Input type='password' label='password' placeholder='Digite sua senha' width='250px' height='30px' background='#D9D9D9' register={{...register("password")}} error={errors.password?.message} />
             <Button type='submit' content='Registrar-se' background='#000000' color='#FFFFFF' width='250px' height='30px'/>
+            <Span><Text>Já possui uma conta? </Text> <Link to='/signin' style={{'color':'#000000'}}>Entrar</Link></Span>
         </Form>
     </Container>
   )

@@ -1,5 +1,5 @@
-import { useHistory } from 'react-router-dom'
-import { Container, Title, Form } from './styles'
+import { Link, useHistory } from 'react-router-dom'
+import { Container, Title, Form, Span, Text } from './styles'
 import Input from '../Input'
 import Button from '../Button'
 import * as yup from 'yup'
@@ -18,7 +18,7 @@ export default function SignIn() {
 
     const signinSchema = yup.object().shape({
         email: yup.string().required("Email obrigatório"),
-        password: yup.string().min(3).required("Senha obrigatória"),
+        password: yup.string().required("Senha obrigatória"),
     })
 
     type SignIn = yup.InferType<typeof signinSchema>
@@ -36,7 +36,6 @@ export default function SignIn() {
       const res = await createLogin(data)
       setToken(res.data.token)
       localStorage.setItem("token",res.data.token)
-      console.log(res)
 
       if(res?.name !== 'AxiosError'){
         history.push("/dashboard")
@@ -52,6 +51,7 @@ export default function SignIn() {
             <Input type='email' label='Email' placeholder='Digite seu email' width='250px' height='30px' background='#D9D9D9' register={{...register("email")}} error={errors.email?.message} />
             <Input type='password' label='password' placeholder='Digite sua senha' width='250px' height='30px' background='#D9D9D9' register={{...register("password")}} error={errors.password?.message} />
             <Button type='submit' content='Entrar' background='#000000' color='#FFFFFF' width='250px' height='30px'/>
+            <Span><Text>Não possui uma conta? </Text> <Link to='/signup' style={{'color':'#000000'}}>Registrar-se</Link></Span>
         </Form>
     </Container>
   )

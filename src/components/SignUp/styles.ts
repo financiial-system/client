@@ -23,3 +23,11 @@ export const Form = styled.form`
     height: 400px;
     border-radius: 15px;
 `;
+
+export const Span = styled.span`
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    font-weight: bold;
+`
+export const Text = styled.p``
