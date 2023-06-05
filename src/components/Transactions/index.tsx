@@ -19,7 +19,7 @@ export default function transactions() {
   }
 
   useEffect(()=>{
-    //listTransactions()
+    listTransactions()
   },[listTransactions])
 
   return (
