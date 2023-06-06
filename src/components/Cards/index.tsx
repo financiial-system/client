@@ -16,18 +16,24 @@ export default function Cards(){
     const results = transactions.filter((transactions:any) => transactions.user?.id === userId)
     
     const entradas = results.filter((result:any) => result.type === 'Entrada')
-    const [entrada] = entradas
+    const inputs = entradas.map((item:any,i:any,array:any) => {
+        if(array[i].amount){
+            return item.amount
+        }
+    })
+    const fullEntry = Object.values(inputs).reduce((acc:any,current:any) => acc + current,0)
 
     const saidas = results.filter((result:any) => result.type === 'Saída')
-    const [saida] = saidas
+    const outputs = saidas.map((item:any,i:any,array:any) => {
+        if(array[i].amount){
+            return item.amount
+        }
+    })
+    const fullExit = Object.values(outputs).reduce((acc:any,current:any) => acc + current,0)
 
-    const total = entrada.amount - saida.amount
-    
-    //dinamizar a variável
-    //1.criar um state de array de entrada e de saída
-    //2.criar um resucer
-    
-  return (
+    const total = Number(fullEntry) - Number(fullExit)
+
+    return (
     <Container props={{isMobile, isTablet}}>
         <Card props={{isMobile, isTablet, isLaptop}}>
             <CardHeader>
@@ -36,7 +42,7 @@ export default function Cards(){
             </CardHeader>
 
             <CardBody>
-                <Monetary>R${entrada.amount}</Monetary>
+                <Monetary>R${fullEntry}</Monetary>
             </CardBody>
         </Card>
 
@@ -47,7 +53,7 @@ export default function Cards(){
             </CardHeader>
 
             <CardBody>
-                <Monetary>R${saida.amount}</Monetary>
+                <Monetary>R${fullExit}</Monetary>
             </CardBody>
         </Card>
 
