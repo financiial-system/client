@@ -24,6 +24,7 @@ export const Container = styled.div<IContainer>`
 `;
 
 export const Card = styled.div<ICard>`
+
     position: relative;
     left: 0;
     top: -30px;
@@ -41,6 +42,8 @@ export const CardHeader = styled.div`
 export const Title = styled.h3``;
 
 export const CardBody = styled.div``;
+
+export const Total = styled.div``;
 
 export const Monetary = styled.h3`
     margin-left:  60px;
