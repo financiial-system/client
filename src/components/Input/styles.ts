@@ -14,7 +14,7 @@ export const Container = styled.div`
     flex-direction: column;
 `;
 
-export const Input = styled.input<IInput>` 
+export const Inputt = styled.input<IInput>` 
     width: ${(p) => p.props.width};
     height: ${(p) => p.props.height};
     background-color: ${(p) => p.props.background};

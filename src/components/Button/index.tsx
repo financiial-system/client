@@ -14,9 +14,9 @@ export interface IButton{
 export default function Button({background,color,type,onClick,width,height,padding,content}: IButton){
   return (
     <Container
-        props={{background,color,width,height,padding}}
-        onClick={onClick}
-        type={type}
+      props={{background,color,width,height,padding}}
+      onClick={onClick}
+      type={type}
     >
       {content}
     </Container>

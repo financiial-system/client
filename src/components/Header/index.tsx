@@ -1,13 +1,11 @@
 import { useHistory } from 'react-router-dom'
 import { useMediaQuery } from 'usehooks-ts'
-import { Header, Name, Logotipo, Container, Avatar, Text, Logout } from "./styles"
+import { Headerr, Name, Logotipo, Container, Avatar, Text, Logout } from "./styles"
 import { IoMdLogOut } from 'react-icons/io'
-import avatar from '../../assets/avatar.jpg'
 import { useContext } from 'react'
-import { UserContext } from '../../providers/userContext'
 import { TransactionsContext } from '../../providers/transactionsContext'
 
-export default function header() {
+export default function Header() {
     const history = useHistory()
     const isMobile = useMediaQuery("(min-width: 375px)")
     const isTablet = useMediaQuery("(min-width: 768px)")
@@ -23,7 +21,7 @@ export default function header() {
     }
 
   return (
-    <Header>
+    <Headerr>
         <Name>{data?.user.name}</Name>
         <Logotipo props={{isMobile, isTablet}}>Sistema Financeiro</Logotipo>
         <Container>
@@ -33,6 +31,6 @@ export default function header() {
                 <IoMdLogOut fontSize={25}></IoMdLogOut>
             </Logout>
         </Container>
-    </Header>
+    </Headerr>
   )
 }

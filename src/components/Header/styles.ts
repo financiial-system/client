@@ -7,7 +7,7 @@ interface ILogotipo{
     }
 }
 
-export const Header = styled.header`
+export const Headerr = styled.header`
     display: flex;
     justify-content: space-around;
     padding: 40px 0px;

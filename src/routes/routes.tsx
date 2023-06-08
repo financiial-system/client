@@ -1,9 +1,8 @@
 import { Switch, Route, Redirect } from 'react-router-dom'
-import Welcome from '../components/Welcome'
-import SignUp from '../components/SignUp'
-import SignIn from '../components/Signin'
+import Welcome from '../pages/Welcome'
+import SignUp from '../pages/SignUp'
+import SignIn from '../pages/SignIn'
 import Dashboard from '../pages/Dashboard'
-import { toast } from 'react-toastify'
 
 export default function Router() {
   const token = localStorage.getItem("token")

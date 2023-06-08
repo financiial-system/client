@@ -1,5 +1,5 @@
 import { FieldError, FieldErrorsImpl, Merge } from 'react-hook-form'
-import { Container, Input, Label } from './styles';
+import { Container, Inputt, Label } from './styles';
 
 interface Props{
     label?: string;
@@ -17,11 +17,11 @@ interface Props{
     error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>> | undefined | string;
 }
 
-export default function input({label, type, value, style, checked , onChange, placeholder, width, cursor, height, background, register, error}:Props) {
+export default function Input({label, type, value, style, checked , onChange, placeholder, width, cursor, height, background, register, error}:Props) {
   return (
     <Container>
       <>{error ? error : <Label>{label}</Label>}</>
-      <Input 
+      <Inputt 
         props={{width, height, background, cursor}}
         style={style}
         type={type}
@@ -31,7 +31,7 @@ export default function input({label, type, value, style, checked , onChange, pl
         placeholder={placeholder}
         {...register} 
       >
-      </Input>
+      </Inputt>
     </Container>
   )
 }
