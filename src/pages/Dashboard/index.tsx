@@ -21,6 +21,8 @@ export default function Dashboard() {
     const isMobileL = useMediaQuery("(max-width: 425px)")
     const isTablet = useMediaQuery("(min-width: 768px)")
     const isLaptop = useMediaQuery("(min-width: 1024px)")
+    const isDesktop = useMediaQuery("(min-width: 1360px)")
+    const isDesktopL = useMediaQuery("(min-width: 1440px)")
 
     const { transactions, createTransactions, listTransactions, deleteTransactions } = useContext(TransactionsContext)
     const userId = localStorage.getItem("userId")
@@ -141,7 +143,7 @@ export default function Dashboard() {
         </Container>
 
         <FormContainer>
-          <Form onSubmit={handleSubmit(onSubmit)} props={{isMobile,isMobileL}}>
+          <Form onSubmit={handleSubmit(onSubmit)} props={{isMobile,isMobileL,isDesktop,isDesktopL}}>
             <Input type='text' label='Descrição' height='30px' background='#D9D9D9' register={{...register("description")}} error={errors.description?.message} />
             <Input type='text' label='Quantidade' height='30px' background='#D9D9D9' register={{...register("amount")}} error={errors.amount?.message} />
             <FormWrapper>

@@ -41,7 +41,7 @@ export const Wrapper = styled.div`
 `
 export const Text = styled.p`
     display: flex;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 500;
     text-align: justify;
     max-width: 500px;

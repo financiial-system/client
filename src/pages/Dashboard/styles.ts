@@ -19,6 +19,8 @@ interface IForm{
     props:{
         isMobile: boolean;
         isMobileL: boolean;
+        isDesktop: boolean;
+        isDesktopL: boolean;
     }
 }
 
@@ -61,13 +63,11 @@ export const Monetary = styled.h3`
 export const FormContainer = styled.div`
     display: flex;
     justify-content: center;
-    background-color: var(--grey);
+    background-color: var(--grey); 
 `
 
 export const Form = styled.form<IForm>`    
     display: flex;
-    ${(p) => p.props.isMobile && {"flexDirection":"column"}};
-    ${(p) => p.props.isMobileL && {"flexDirection":"column"}};
     align-items: center;
     justify-content: space-around;
     gap: 20px;
@@ -75,6 +75,11 @@ export const Form = styled.form<IForm>`
     padding: 20px 10px;
     margin: 20px 100px;
     width: 100%;
+
+    @media (max-width: 780px){
+        display: flex;
+        flex-direction: column;
+    }
 `
 
 export const FormWrapper = styled.div`

@@ -11,7 +11,7 @@ export const UserProvider = ({ children }: IProviderUser) => {
     async function createUser(data: any){
         try {
             const res = await api.post('/users', data);
-            return res;
+            return res
         } catch (err) {
             return err
         }
