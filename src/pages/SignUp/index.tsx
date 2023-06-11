@@ -51,7 +51,7 @@ export default function SignUp() {
             <Input type='text' label='Nome' placeholder='Digite seu nome' width='250px' height='30px' background='#D9D9D9' register={{...register("name")}} error={errors.name?.message}/>
             <Input type='text' label='Avatar' placeholder='Digite a url' width='250px' height='30px' background='#D9D9D9' register={{...register("avatar")}} error={errors.avatar?.message} />
             <Input type='email' label='Email' placeholder='Digite seu email' width='250px' height='30px' background='#D9D9D9' register={{...register("email")}} error={errors.email?.message} />
-            <Input type='password' label='password' placeholder='Digite sua senha' width='250px' height='30px' background='#D9D9D9' register={{...register("password")}} error={errors.password?.message} />
+            <Input type='password' label='Password' placeholder='Digite sua senha' width='250px' height='30px' background='#D9D9D9' register={{...register("password")}} error={errors.password?.message} />
             <Button type='submit' content='Registrar-se' background='#000000' color='#FFFFFF' width='250px' height='30px'/>
             <Span><Text>Já possui uma conta? </Text> <Link to='/signin' style={{'color':'#000000'}}>Entrar</Link></Span>
         </Form>
