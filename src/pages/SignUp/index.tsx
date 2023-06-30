@@ -34,7 +34,7 @@ export default function SignUp() {
 
     const onSubmit = async (data: any) => {
       const res = await createUser(data)
-      console.log(res)
+      
       localStorage.setItem("userId",res.data.users.id)
       localStorage.setItem("name",res.data.users.name)
       
